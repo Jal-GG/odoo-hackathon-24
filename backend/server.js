@@ -1,7 +1,8 @@
-const express = require("express");
-const connectDB = require("./database/connectDB");
-const User = require("./database/userSchema");
-const bodyParser = require("body-parser");
+import express from "express";
+import connectDB from "./database/connectDB";
+import User from "./database/userSchema";
+import bodyParser from "body-parser";
+
 const app = express();
 const port = 1000;
 

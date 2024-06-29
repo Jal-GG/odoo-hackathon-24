@@ -1,5 +1,4 @@
-const { MongoClient } = require("mongodb");
-
+import { MongoClient } from "mongodb";
 const uri = "mongodb+srv://kalp:kalp@chatapp.jwuw7sf.mongodb.net/?appName=chatapp";
 const client = new MongoClient(uri);
 
@@ -14,4 +13,4 @@ async function connectDB() {
   }
 }
 
-module.exports = connectDB;
+export default connectDB;
