@@ -1,17 +1,14 @@
-const { MongoClient } = require("mongodb");
+import mongoose from "mongoose";
 
-const uri = "mongodb+srv://kalp:kalp@chatapp.jwuw7sf.mongodb.net/?appName=chatapp";
-const client = new MongoClient(uri);
 
-async function connectDB() {
-  try {
-    await client.connect();
-    console.log("Connected successfully to MongoDB");
-  } catch (err) {
-    console.error("Failed to connect to MongoDB", err);
-  } finally {
-    await client.close();
-  }
+const connectToMongoDB = async () =>{
+    try {
+        await mongoose.connect("mongodb+srv://cluster0:cZt4uZRyLlaxwXuQ@cluster0.iv50o9y.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+        console.log("connected to MongoDB");
+    }
+    catch(err){
+        console.log("error connecting to MongoDB", err.message);
+    }
 }
 
-module.exports = connectDB;
+export default connectToMongoDB; 

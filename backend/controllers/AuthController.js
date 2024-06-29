@@ -2,12 +2,11 @@ import User from  "../database/userSchema.js"
 import bcrypt from "bcryptjs"
 import generateJsonWebTokenandCookie from "../utils/GenerateJwtToken.js"
 
-
 export const signup = async (req, res) => {
     try {
       const { username,email,password,gender } = req.body;
-      const Email = await User.findOne({ Email});
-      if(email){
+      const Email = await User.findOne({ email});
+      if(Email){
         return res.status(400).json({ error: "Email already taken" });
       }
       const user = await User.findOne({ username });
