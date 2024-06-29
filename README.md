@@ -1,3 +1,4 @@
+![fitfuel-high-resolution-logo](https://github.com/Jal-GG/odoo-hackathon-24/assets/119776481/ecab8fc8-28a9-40fb-b61c-eb9dd46c834c)
 
 <h1 align="center">Diet Recommendation System</h1>
 <div align= "center"><img src="newlogo.png" />
