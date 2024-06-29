@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 app.use("/api", AuthRoutes);
 
 // Start the server
-app.listen(port, () => {
+app.listen(5000, () => {
   connectDB();
   console.log(`Server is running on port ${port}`);
 });
