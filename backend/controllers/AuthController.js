@@ -2,12 +2,11 @@ import User from  "../database/userSchema.js"
 import bcrypt from "bcryptjs"
 import generateJsonWebTokenandCookie from "../utils/GenerateJwtToken.js"
 
-
 export const signup = async (req, res) => {
     try {
       const { username,email,password,gender } = req.body;
-      const Email = await User.findOne({ Email});
-      if(email){
+      const Email = await User.findOne({ email});
+      if(Email){
         return res.status(400).json({ error: "Email already taken" });
       }
       const user = await User.findOne({ username });
@@ -51,4 +50,42 @@ export const signup = async (req, res) => {
   };
 
 
+//login 
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const Email = await User.findOne({ email });
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      user?.password || ""
+    );
 
+    if (!Email || !isPasswordCorrect) {
+      return res.status(400).json({ error: "invalid username or password" });
+    }
+
+    generateJsonWebTokenandCookie(user._id, res);
+
+    return res.status(200).json({
+      _id: user._id,
+      fullname: user.fullname,
+      username: user.username,
+      profilePic: user.profilePic,
+    });
+  } catch (error) {
+    console.log("error in login", error.message);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+//logout
+  export const logout = async (req, res) => {
+    try {
+      res.cookie("jwt","",{maxAge:0})
+      res.status(200).json({message:"Logged out successfully"})
+    } catch (error) {
+      console.log("error in login", error.message);
+      res.status(500).json({ error: error.message });
+    }
+  };
