@@ -1,10 +1,21 @@
-const express = require("express");
-const connectDB = require("./database/connectDB");
-const dotenv = require("dotenv");
+import express from 'express';
+import dotenv from 'dotenv';
+import AuthRoutes from "./routes/AuthRoutes.js"
+import cookieParser from 'cookie-parser';
+
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(cookieParser());
+
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+app.use('/api/auth', AuthRoutes);
 
 app.get("/", async (req, res) => {
   try {
