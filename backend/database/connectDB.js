@@ -1,5 +1,6 @@
 import { MongoClient } from "mongodb";
-const uri = "mongodb+srv://kalp:kalp@chatapp.jwuw7sf.mongodb.net/?appName=chatapp";
+const uri =
+  "mongodb+srv://kalp:FDHpO3YxDYihJHrZ@chatapp.jwuw7sf.mongodb.net/?appName=chatapp";
 const client = new MongoClient(uri);
 
 async function connectDB() {
